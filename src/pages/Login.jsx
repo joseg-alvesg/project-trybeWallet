@@ -3,8 +3,32 @@ import Button from '../components/button/Button';
 import Input from '../components/input/Input';
 
 // start
+
+const MIN_PASSWD = 5;
 class Login extends React.Component {
+  state = {
+    email: '',
+    passwd: '',
+    isDisable: true,
+  };
+
+  onChange = ({ target: { value, name } }) => {
+    this.setState({ [name]: value }, this.verify);
+  };
+
+  verify = () => {
+    const { email, passwd } = this.state;
+    const regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\)?$/i;
+    const passwdverify = passwd.length > MIN_PASSWD;
+
+    const isDisable = !(regexEmail.test(email) && passwdverify);
+    console.log(isDisable);
+
+    this.setState({ isDisable });
+  };
+
   render() {
+    const { isDisable, email, passwd } = this.state;
     return (
       <form>
         <Input
@@ -13,6 +37,8 @@ class Login extends React.Component {
           name="email"
           placeHolder="E-mail"
           testId="email-input"
+          onchange={ this.onChange }
+          value={ email }
         />
         <Input
           type="password"
@@ -20,8 +46,10 @@ class Login extends React.Component {
           name="passwd"
           placeHolder="Senha"
           testId="password-input"
+          onchange={ this.onChange }
+          value={ passwd }
         />
-        <Button text="Entrar" type="button" />
+        <Button text="Entrar" type="button" disabled={ isDisable } />
       </form>
     );
   }

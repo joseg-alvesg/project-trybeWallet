@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 export default class Input extends Component {
   render() {
-    const { type, testId, name, id, placeHolder } = this.props;
+    const { type, testId, name, id, placeHolder, onchange, value } = this.props;
     return (
       <input
         type={ type }
@@ -11,6 +11,8 @@ export default class Input extends Component {
         placeholder={ placeHolder }
         id={ id }
         data-testid={ testId }
+        onChange={ onchange }
+        value={ value }
       />
     );
   }
@@ -22,4 +24,6 @@ Input.propTypes = {
   testId: PropTypes.string,
   type: PropTypes.string,
   placeHolder: PropTypes.string,
+  onchange: PropTypes.func,
+  value: PropTypes.string,
 }.isRequired;
