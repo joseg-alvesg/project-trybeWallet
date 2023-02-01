@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { userEmail } from '../redux/actions';
+import styles from './styles/Login.module.css';
+import logo from '../images/group1.svg';
 
 // start
 
@@ -36,33 +38,36 @@ class Login extends React.Component {
   render() {
     const { isDisable, email, passwd } = this.state;
     return (
-      <form>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="E-mail"
-          data-testid="email-input"
-          onChange={ this.onChange }
-          value={ email }
-        />
-        <input
-          type="password"
-          id="passwd"
-          name="passwd"
-          placeholder="Senha"
-          data-testid="password-input"
-          onChange={ this.onChange }
-          value={ passwd }
-        />
-        <button
-          type="button"
-          disabled={ isDisable }
-          onClick={ this.onClick }
-        >
-          Entrar
-        </button>
-      </form>
+      <div className={ styles.container }>
+        <form className={ styles.form }>
+          <img src={ logo } alt="" />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="E-mail"
+            data-testid="email-input"
+            onChange={ this.onChange }
+            value={ email }
+          />
+          <input
+            type="password"
+            id="passwd"
+            name="passwd"
+            placeholder="Senha"
+            data-testid="password-input"
+            onChange={ this.onChange }
+            value={ passwd }
+          />
+          <button
+            type="button"
+            disabled={ isDisable }
+            onClick={ this.onClick }
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     );
   }
 }
