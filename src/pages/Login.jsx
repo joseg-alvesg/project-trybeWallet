@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../components/button/Button';
-import Input from '../components/input/Input';
+import { connect } from 'react-redux';
+import { userEmail } from '../redux/actions';
 
 // start
 
@@ -22,37 +23,55 @@ class Login extends React.Component {
     const passwdverify = passwd.length > MIN_PASSWD;
 
     const isDisable = !(regexEmail.test(email) && passwdverify);
-    console.log(isDisable);
-
     this.setState({ isDisable });
+  };
+
+  onClick = () => {
+    const { dispatch, history } = this.props;
+    const { email, passwd } = this.state;
+    dispatch(userEmail(email, passwd));
+    history.push('/carteira');
   };
 
   render() {
     const { isDisable, email, passwd } = this.state;
     return (
       <form>
-        <Input
+        <input
           type="email"
           id="email"
           name="email"
-          placeHolder="E-mail"
-          testId="email-input"
-          onchange={ this.onChange }
+          placeholder="E-mail"
+          data-testid="email-input"
+          onChange={ this.onChange }
           value={ email }
         />
-        <Input
+        <input
           type="password"
           id="passwd"
           name="passwd"
-          placeHolder="Senha"
-          testId="password-input"
-          onchange={ this.onChange }
+          placeholder="Senha"
+          data-testid="password-input"
+          onChange={ this.onChange }
           value={ passwd }
         />
-        <Button text="Entrar" type="button" disabled={ isDisable } />
+        <button
+          type="button"
+          disabled={ isDisable }
+          onClick={ this.onClick }
+        >
+          Entrar
+        </button>
       </form>
     );
   }
 }
 
-export default Login;
+Login.propTypes = {
+  dispatch: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
+
+export default connect()(Login);
