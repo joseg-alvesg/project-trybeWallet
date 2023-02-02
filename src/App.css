@@ -1,3 +1,7 @@
 .app {
+  background-image: url('./images/foto-fundo.svg');
+  background-position: bottom center, 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
 }

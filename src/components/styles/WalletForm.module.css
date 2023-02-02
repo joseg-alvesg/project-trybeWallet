@@ -1,0 +1,8 @@
+.walletForm {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 70%;
+}

@@ -1,0 +1,24 @@
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 30%;
+  justify-content: space-around;
+}
+
+.header p {
+  align-items: center;
+  display: flex;
+}
+
+.header p img {
+  margin-right: 10px;
+}
+
+.header p span {
+  margin-left: 2px;
+}
+
+.logo {
+  width: 25%;
+}
