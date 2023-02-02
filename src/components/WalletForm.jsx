@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionCoin } from '../redux/actions/walletAction';
+import { actionCoin, actionExpense } from '../redux/actions/walletAction';
 import Header from './Header';
 import styles from './styles/WalletForm.module.css';
 
+const INITIAL_LOCAL_STATE = {
+  category: '',
+  valor: '0',
+  description: 'Alimentação',
+  coin: 'USD',
+  payment: 'Dinheiro',
+};
+
 class WalletForm extends Component {
   state = {
-    category: '',
-    valor: '0',
-    description: '',
-    coin: '',
-    payment: '',
-    currencies: '',
+    ...INITIAL_LOCAL_STATE,
   };
 
   componentDidMount() {
@@ -24,8 +27,15 @@ class WalletForm extends Component {
     this.setState({ [name]: value });
   };
 
+  handleClick = () => {
+    const { dispatch } = this.props;
+    const { ...state } = this.state;
+
+    dispatch(actionExpense({ ...state }));
+  };
+
   render() {
-    const { currencies } = this.props;
+    const { currencies, dispatch } = this.props;
     const { category, valor, description, coin, payment } = this.state;
     console.log(category, valor, description, coin, payment);
     return (
@@ -95,7 +105,7 @@ class WalletForm extends Component {
             </select>
           </label>
         </form>
-        <button>Adicionar despesas</button>
+        <button onClick={ this.handleClick }>Adicionar despesas</button>
       </div>
     );
   }

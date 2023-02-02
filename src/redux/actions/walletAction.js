@@ -17,8 +17,21 @@ export const actionCoin = () => async (dispatch) => {
   }
 };
 
-const EXPENSES = 'EXPENSES';
+export const EXPENSES = 'EXPENSES';
 
-export const actionExpense = () => {
+const currencie = (data) => ({ type: EXPENSES, payload: data });
 
-}
+export const actionExpense = (data) => async (dispatch) => {
+  try {
+    await dispatch(requestApi());
+    const request = await coinsApi();
+    const response = Object.values(request)
+      .filter((coin) => (coin.code === data.coin));
+    console.log(response);
+    data = { ...data, currencie: response[0].ask };
+    console.log(data);
+    await dispatch(currencie(data));
+  } catch (err) {
+    console.log(err);
+  }
+};
