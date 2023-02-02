@@ -1,3 +1,5 @@
+import { GET_COIN } from '../actions/walletAction';
+
 const INITIAL_STATE = {
   currencies: [], // array de string
   expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
@@ -7,6 +9,11 @@ const INITIAL_STATE = {
 
 export const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+  case GET_COIN:
+    return {
+      ...state,
+      currencies: action.payload,
+    };
   default:
     return state;
   }
