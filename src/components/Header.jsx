@@ -8,7 +8,14 @@ import imgIcon from '../images/imgIcon.svg';
 
 class Header extends Component {
   render() {
-    const { email } = this.props;
+    const { email, expenses } = this.props;
+    let value = 0;
+    expenses.forEach((sum) => {
+      const exChangeToArray = Object.entries(sum.exchangeRates);
+      const position = exChangeToArray.find((elem) => elem[0] === sum.currency);
+      value += (Number(position[1].ask) * Number(sum.value));
+    });
+
     return (
       <div className={ styles.header }>
         <img src={ logo } alt="logo" className={ styles.logo } />
@@ -16,7 +23,7 @@ class Header extends Component {
           <img src={ despesa } alt="despesas" />
           Total de despesas:
           <span data-testid="total-field">
-            0
+            {value.toFixed(2)}
           </span>
           <span data-testid="header-currency-field">BRL</span>
         </p>
@@ -32,10 +39,12 @@ class Header extends Component {
 
 Header.propTypes = {
   email: PropTypes.string,
+  value: PropTypes.string,
 }.isRequired;
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 export default connect(mapStateToProps)(Header);

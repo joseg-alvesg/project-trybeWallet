@@ -6,11 +6,11 @@ import Header from './Header';
 import styles from './styles/WalletForm.module.css';
 
 const INITIAL_LOCAL_STATE = {
-  category: '',
-  valor: '0',
-  description: 'Alimentação',
-  coin: 'USD',
-  payment: 'Dinheiro',
+  tag: '',
+  value: '',
+  description: '',
+  currency: 'USD',
+  method: '',
 };
 
 class WalletForm extends Component {
@@ -32,32 +32,33 @@ class WalletForm extends Component {
     const { ...state } = this.state;
 
     dispatch(actionExpense({ ...state }));
+    this.setState({ ...INITIAL_LOCAL_STATE });
   };
 
   render() {
     const { currencies, dispatch } = this.props;
-    const { category, valor, description, coin, payment } = this.state;
-    console.log(category, valor, description, coin, payment);
+    const { tag, value, description, currency, method } = this.state;
+    console.log(tag, value, description, currency, method);
     return (
       <div className={ styles.walletForm }>
         <Header />
         <form className={ styles.formContainer }>
-          <label htmlFor="valor">
+          <label htmlFor="value">
             Valor
             <input
               type="number"
-              name="valor"
-              value={ valor }
+              name="value"
+              value={ value }
               onChange={ this.handleChange }
               data-testid="value-input"
             />
           </label>
-          <label htmlFor="category">
+          <label htmlFor="tag">
             Categoria da despesa
             <select
               onChange={ this.handleChange }
-              name="category"
-              id="category"
+              name="tag"
+              id="tag"
               data-testid="tag-input"
             >
               <option value="Alimentação">Alimentação</option>
@@ -78,11 +79,11 @@ class WalletForm extends Component {
               data-testid="description-input"
             />
           </label>
-          <label htmlFor="payment" data-testid="method-input">
+          <label htmlFor="method">
             Método de pagamento
             <select
-              name="payment"
-              id="payment"
+              name="method"
+              id="method"
               data-testid="method-input"
               onChange={ this.handleChange }
             >
@@ -91,11 +92,11 @@ class WalletForm extends Component {
               <option value="Cartão de débito">Cartão de débito</option>
             </select>
           </label>
-          <label htmlFor="coin">
+          <label htmlFor="currency">
             Moeda
             <select
-              name="coin"
-              id="coin"
+              name="currency"
+              id="currency"
               data-testid="currency-input"
               onChange={ this.handleChange }
             >

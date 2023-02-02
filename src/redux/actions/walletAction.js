@@ -19,18 +19,14 @@ export const actionCoin = () => async (dispatch) => {
 
 export const EXPENSES = 'EXPENSES';
 
-const currencie = (data) => ({ type: EXPENSES, payload: data });
+const getExpense = (data) => ({ type: EXPENSES, payload: data });
 
 export const actionExpense = (data) => async (dispatch) => {
   try {
     await dispatch(requestApi());
     const request = await coinsApi();
-    const response = Object.values(request)
-      .filter((coin) => (coin.code === data.coin));
-    console.log(response);
-    data = { ...data, currencie: response[0].ask };
-    console.log(data);
-    await dispatch(currencie(data));
+    data = { ...data, exchangeRates: request };
+    await dispatch(getExpense(data));
   } catch (err) {
     console.log(err);
   }
