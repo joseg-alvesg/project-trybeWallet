@@ -17,7 +17,7 @@ class WalletForm extends Component {
     return (
       <div className={ styles.walletForm }>
         <Header />
-        <form>
+        <form className={ styles.formContainer }>
           <label htmlFor="despesa">
             Valor
             <input
@@ -61,6 +61,7 @@ class WalletForm extends Component {
             </select>
           </label>
           <label htmlFor="coin">
+            Moeda
             <select name="coin" id="coin" data-testid="currency-input">
               {currencies.map((currencie) => (
                 <option key={ currencie } value="">{currencie}</option>
