@@ -16,3 +16,9 @@ export const actionCoin = () => async (dispatch) => {
     console.log(err);
   }
 };
+
+const EXPENSES = 'EXPENSES';
+
+export const actionExpense = () => {
+
+}
