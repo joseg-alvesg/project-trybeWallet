@@ -1,4 +1,5 @@
 import React from 'react';
+import Table from '../components/Table';
 import WalletForm from '../components/WalletForm';
 import styles from './styles/wallet.module.css';
 
@@ -7,7 +8,7 @@ class Wallet extends React.Component {
     return (
       <div className={ styles.wallet }>
         <WalletForm />
-        carteira
+        <Table />
       </div>
     );
   }
