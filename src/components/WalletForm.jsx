@@ -20,7 +20,7 @@ class WalletForm extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    console.log(dispatch(actionCoin()));
+    dispatch(actionCoin());
   }
 
   handleChange = ({ target: { value, name } }) => {
