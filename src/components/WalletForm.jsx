@@ -38,7 +38,6 @@ class WalletForm extends Component {
   render() {
     const { currencies } = this.props;
     const { tag, value, description, currency, method } = this.state;
-    console.log(tag, value, description, currency, method);
     return (
       <div className={ styles.walletForm }>
         <Header />
@@ -60,6 +59,7 @@ class WalletForm extends Component {
               name="tag"
               id="tag"
               data-testid="tag-input"
+              value={ tag }
             >
               <option value="Alimentação">Alimentação</option>
               <option value="Lazer">Lazer</option>
@@ -86,6 +86,7 @@ class WalletForm extends Component {
               id="method"
               data-testid="method-input"
               onChange={ this.handleChange }
+              value={ method }
             >
               <option value="Dinheiro">Dinheiro</option>
               <option value="Cartão de crédito">Cartão de crédito</option>
@@ -99,6 +100,7 @@ class WalletForm extends Component {
               id="currency"
               data-testid="currency-input"
               onChange={ this.handleChange }
+              value={ currency }
             >
               {currencies.map((currencie) => (
                 <option key={ currencie } value={ currencie }>{currencie}</option>
