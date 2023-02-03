@@ -16,6 +16,7 @@ const INITIAL_LOCAL_STATE = {
 class WalletForm extends Component {
   state = {
     ...INITIAL_LOCAL_STATE,
+    id: 0,
   };
 
   componentDidMount() {
@@ -30,9 +31,10 @@ class WalletForm extends Component {
   handleClick = () => {
     const { dispatch } = this.props;
     const { ...state } = this.state;
+    const { id } = this.state;
 
     dispatch(actionExpense({ ...state }));
-    this.setState({ ...INITIAL_LOCAL_STATE });
+    this.setState({ ...INITIAL_LOCAL_STATE, id: id + 1 });
   };
 
   render() {

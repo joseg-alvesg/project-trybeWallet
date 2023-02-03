@@ -1,10 +1,18 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { actionDelete } from '../redux/actions/walletAction';
 import styles from './styles/table.module.css';
 import TableCard from './TableCard';
 
 class Table extends Component {
+  deleteButton = ({ target: { id } }) => {
+    const { expenses, dispatch } = this.props;
+    const filteredeExpense = expenses.filter((expense) => expense.id !== Number(id));
+    // console.log(filteredeExpense);
+    dispatch(actionDelete(filteredeExpense));
+  };
+
   render() {
     const { expenses } = this.props;
 
@@ -27,7 +35,11 @@ class Table extends Component {
 
           <tbody>
             {expenses.map((elem) => (
-              <TableCard key={ elem.id } expense={ elem } />
+              <TableCard
+                key={ elem.id }
+                expense={ elem }
+                deleteButton={ this.deleteButton }
+              />
             ))}
           </tbody>
         </table>

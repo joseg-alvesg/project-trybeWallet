@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import trash from '../images/trashBtn.svg';
+import edit from '../images/editBtn.svg';
 
 export default class TableCard extends Component {
   render() {
-    const { expense } = this.props;
+    const { expense, deleteButton } = this.props;
     console.log(expense);
     return (
       <tr key={ expense.id }>
@@ -19,8 +21,14 @@ export default class TableCard extends Component {
         </td>
         <td>{expense.exchangeRates[expense.currency].codein}</td>
         <td>
-          <button>editar</button>
-          <button>excluir</button>
+          <button><img src={ edit } alt="edit" /></button>
+          <button
+            id={ expense.id }
+            data-testid="delete-btn"
+            onClick={ deleteButton }
+          >
+            <img id={ expense.id } src={ trash } alt="trash" />
+          </button>
         </td>
       </tr>
     );
@@ -28,6 +36,7 @@ export default class TableCard extends Component {
 }
 
 TableCard.propTypes = {
+  deleteButton: PropTypes.func,
   expense: PropTypes.shape({
     currency: PropTypes.string,
     description: PropTypes.string,
