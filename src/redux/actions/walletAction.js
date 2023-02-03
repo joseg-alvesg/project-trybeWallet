@@ -4,6 +4,8 @@ export const REQUEST_API = 'REQUEST_API';
 export const GET_COIN = 'GET_COIN';
 export const EXPENSES = 'EXPENSES';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const EDITED_EXPENSE = 'EDITED_EXPENSE';
 
 const requestApi = () => ({ type: REQUEST_API });
 const getCoin = (data) => ({ type: GET_COIN, payload: data });
@@ -34,4 +36,17 @@ export const actionExpense = (data) => async (dispatch) => {
 export const actionDelete = (id) => ({
   type: DELETE_EXPENSE,
   payload: id,
+});
+
+export const actionEdit = (data) => ({
+  type: EDIT_EXPENSE,
+  payload: data,
+});
+
+export const actionEditedExpense = (data) => ({
+  type: EDITED_EXPENSE,
+  payload: {
+    data,
+    editor: false,
+  },
 });

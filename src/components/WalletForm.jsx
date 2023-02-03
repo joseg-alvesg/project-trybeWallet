@@ -1,22 +1,23 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionCoin, actionExpense } from '../redux/actions/walletAction';
+import { actionCoin, actionEditedExpense,
+  actionExpense } from '../redux/actions/walletAction';
 import Header from './Header';
 import styles from './styles/WalletForm.module.css';
 
 const INITIAL_LOCAL_STATE = {
-  tag: '',
+  tag: 'Alimentação',
   value: '',
   description: '',
   currency: 'USD',
-  method: '',
+  method: 'Dinheiro',
+  id: 0,
 };
 
 class WalletForm extends Component {
   state = {
     ...INITIAL_LOCAL_STATE,
-    id: 0,
   };
 
   componentDidMount() {
@@ -24,21 +25,32 @@ class WalletForm extends Component {
     dispatch(actionCoin());
   }
 
+  componentDidUpdate() {
+    const { editing, idToEdit, editor } = this.props;
+    const { id } = this.state;
+    if (idToEdit !== id && editor) {
+      this.setState({ ...editing });
+    }
+  }
+
   handleChange = ({ target: { value, name } }) => {
     this.setState({ [name]: value });
   };
 
   handleClick = () => {
-    const { dispatch } = this.props;
+    const { dispatch, expenses } = this.props;
     const { ...state } = this.state;
-    const { id } = this.state;
+    dispatch(actionExpense({ ...state, id: expenses.length }));
+    this.setState({ ...INITIAL_LOCAL_STATE });
+  };
 
-    dispatch(actionExpense({ ...state }));
-    this.setState({ ...INITIAL_LOCAL_STATE, id: id + 1 });
+  clickToEdit = () => {
+    const { dispatch } = this.props;
+    dispatch(actionEditedExpense(this.state));
   };
 
   render() {
-    const { currencies } = this.props;
+    const { currencies, editor } = this.props;
     const { tag, value, description, currency, method } = this.state;
     return (
       <div className={ styles.walletForm }>
@@ -110,7 +122,9 @@ class WalletForm extends Component {
             </select>
           </label>
         </form>
-        <button onClick={ this.handleClick }>Adicionar despesas</button>
+        <button onClick={ editor ? this.clickToEdit : this.handleClick }>
+          {editor ? 'Editar despesa' : 'Adicionar despesas'}
+        </button>
       </div>
     );
   }
@@ -124,7 +138,11 @@ WalletForm.propTypes = {
 }.isRequired;
 
 const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
   currencies: state.wallet.currencies,
+  editor: state.wallet.editor,
+  editing: state.wallet.editing,
+  idToEdit: state.wallet.idToEdit,
 });
 
 export default connect(mapStateToProps)(WalletForm);

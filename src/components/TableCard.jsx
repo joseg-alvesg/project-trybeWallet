@@ -5,7 +5,7 @@ import edit from '../images/editBtn.svg';
 
 export default class TableCard extends Component {
   render() {
-    const { expense, deleteButton } = this.props;
+    const { expense, deleteButton, editBtn } = this.props;
     console.log(expense);
     return (
       <tr key={ expense.id }>
@@ -21,7 +21,12 @@ export default class TableCard extends Component {
         </td>
         <td>{expense.exchangeRates[expense.currency].codein}</td>
         <td>
-          <button><img src={ edit } alt="edit" /></button>
+          <button
+            data-testid="edit-btn"
+            onClick={ () => editBtn(expense) }
+          >
+            <img src={ edit } alt="edit" />
+          </button>
           <button
             id={ expense.id }
             data-testid="delete-btn"
@@ -37,6 +42,7 @@ export default class TableCard extends Component {
 
 TableCard.propTypes = {
   deleteButton: PropTypes.func,
+  editBtn: PropTypes.func,
   expense: PropTypes.shape({
     currency: PropTypes.string,
     description: PropTypes.string,

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionDelete } from '../redux/actions/walletAction';
+import { actionDelete, actionEdit } from '../redux/actions/walletAction';
 import styles from './styles/table.module.css';
 import TableCard from './TableCard';
 
@@ -9,6 +9,11 @@ class Table extends Component {
   deleteButton = ({ target: { id } }) => {
     const { dispatch } = this.props;
     dispatch(actionDelete(id));
+  };
+
+  editBtn = (data) => {
+    const { dispatch } = this.props;
+    dispatch(actionEdit(data));
   };
 
   render() {
@@ -37,6 +42,7 @@ class Table extends Component {
                 key={ elem.id }
                 expense={ elem }
                 deleteButton={ this.deleteButton }
+                editBtn={ this.editBtn }
               />
             ))}
           </tbody>
