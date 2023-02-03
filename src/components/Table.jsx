@@ -7,10 +7,8 @@ import TableCard from './TableCard';
 
 class Table extends Component {
   deleteButton = ({ target: { id } }) => {
-    const { expenses, dispatch } = this.props;
-    const filteredeExpense = expenses.filter((expense) => expense.id !== Number(id));
-    // console.log(filteredeExpense);
-    dispatch(actionDelete(filteredeExpense));
+    const { dispatch } = this.props;
+    dispatch(actionDelete(id));
   };
 
   render() {

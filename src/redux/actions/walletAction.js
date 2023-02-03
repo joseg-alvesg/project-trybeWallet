@@ -31,7 +31,7 @@ export const actionExpense = (data) => async (dispatch) => {
   }
 };
 
-export const actionDelete = (data) => ({
+export const actionDelete = (id) => ({
   type: DELETE_EXPENSE,
-  payload: data,
+  payload: id,
 });
