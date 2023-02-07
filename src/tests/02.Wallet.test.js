@@ -11,6 +11,8 @@ describe('Teste da cobertura do componente wallet', () => {
     });
   });
 
+  const CARTAO = 'Cartão de crédito';
+
   it('teste do email e totalfield dentro do header', async () => {
     const { history } = renderWithRouterAndRedux(<App />);
     const email = screen.getByTestId('email-input');
@@ -65,7 +67,7 @@ describe('Teste da cobertura do componente wallet', () => {
     waitFor(() => {
       userEvent.selectOptions(currency, 'CAD');
     });
-    userEvent.selectOptions(method, 'Cartão de crédito');
+    userEvent.selectOptions(method, CARTAO);
     userEvent.selectOptions(tag, 'Lazer');
 
     userEvent.click(button);
@@ -102,7 +104,7 @@ describe('Teste da cobertura do componente wallet', () => {
     waitFor(() => {
       userEvent.selectOptions(currency, 'CAD');
     });
-    userEvent.selectOptions(method, 'Cartão de crédito');
+    userEvent.selectOptions(method, CARTAO);
     userEvent.selectOptions(tag, 'Lazer');
 
     userEvent.click(button);
