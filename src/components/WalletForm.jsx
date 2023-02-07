@@ -61,6 +61,7 @@ class WalletForm extends Component {
             <input
               type="number"
               name="value"
+              id="value"
               value={ value }
               onChange={ this.handleChange }
               data-testid="value-input"
