@@ -122,7 +122,10 @@ class WalletForm extends Component {
             </select>
           </label>
         </form>
-        <button onClick={ editor ? this.clickToEdit : this.handleClick }>
+        <button
+          onClick={ editor ? this.clickToEdit : this.handleClick }
+          className={ editor ? styles.edit : styles.add }
+        >
           {editor ? 'Editar despesa' : 'Adicionar despesas'}
         </button>
       </div>

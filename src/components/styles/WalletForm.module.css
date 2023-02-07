@@ -12,11 +12,12 @@
   z-index: 2;
 }
 
-.walletForm button {
+.add {
   background-color: #2fc18c;
   border: 1px solid #2fc18c;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
   font-size: 16px;
   font-weight: 700;
   height: 40px;
@@ -24,14 +25,38 @@
   width: 30%;
 }
 
+.add:hover {
+  height: 45px;
+  width: 35%;
+}
+
+.edit {
+  background-color: #cbe234;
+  border: 1px solid #cbe234;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  height: 40px;
+  margin-top: 15px;
+  width: 30%;
+}
+
+.edit:hover {
+  height: 45px;
+  width: 35%;
+}
+
+
 .formContainer {
   align-items: center;
   background-color: #ededed;
   color: #003be5;
   display: flex;
   flex-wrap: wrap;
-  font-size: 20px;
-  gap: 25px;
+  font-size: 18px;
+  gap: 20px;
   height: 45%;
   justify-content: center;
 }
@@ -41,11 +66,15 @@
   border: 1px solid #003be5;
   border-radius: 5px;
   color: #003be5;
-  font-size: 18px;
-  height: 30px;
+  font-size: 17px;
+  height: 28px;
   margin-left: 5px;
 }
 
 .formContainer select {
-  font-size: 20px;
+  cursor: pointer;
+}
+
+.button {
+  background-color: yellow;
 }
