@@ -19,6 +19,6 @@
 
 - [ x ] 10. Desenvolva testes para atingir 90% de cobertura total da aplicação
 
-<h1>
+<h3>
 Projeto utilizando React e Redux onde foram desenvolvidas habilidades em React, Redux, Testes utilizando RTL, JEST e habilidade de CSS
-</h1>
+</h3>
