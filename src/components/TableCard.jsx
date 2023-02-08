@@ -6,7 +6,6 @@ import edit from '../images/editBtn.svg';
 export default class TableCard extends Component {
   render() {
     const { expense, deleteButton, editBtn } = this.props;
-    console.log(expense);
     return (
       <tr key={ expense.id }>
         <td>{expense.description}</td>

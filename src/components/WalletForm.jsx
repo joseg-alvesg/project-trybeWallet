@@ -12,7 +12,6 @@ const INITIAL_LOCAL_STATE = {
   description: '',
   currency: 'USD',
   method: 'Dinheiro',
-  id: 0,
 };
 
 class WalletForm extends Component {
@@ -47,6 +46,7 @@ class WalletForm extends Component {
   clickToEdit = () => {
     const { dispatch } = this.props;
     dispatch(actionEditedExpense(this.state));
+    this.setState({ ...INITIAL_LOCAL_STATE });
   };
 
   render() {
