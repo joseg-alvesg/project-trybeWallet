@@ -9,12 +9,8 @@ import imgIcon from '../images/imgIcon.svg';
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
-    let value = 0;
-    expenses.forEach((sum) => {
-      const exChangeToArray = Object.entries(sum.exchangeRates);
-      const position = exChangeToArray.find((elem) => elem[0] === sum.currency);
-      value += (Number(position[1].ask) * Number(sum.value));
-    });
+    const sum = expenses.reduce((acc, { currency, exchangeRates, value }) => acc
+      + (Number(exchangeRates[currency].ask) * Number(value)), 0);
 
     return (
       <div className={ styles.header }>
@@ -23,7 +19,7 @@ class Header extends Component {
           <img src={ despesa } alt="despesas" />
           Total de despesas:
           <span data-testid="total-field">
-            {value.toFixed(2)}
+            {sum.toFixed(2)}
           </span>
           <span data-testid="header-currency-field">BRL</span>
         </p>
