@@ -7,7 +7,7 @@
   <a href="#contribuição">Contribuição</a> •
 </p>
 <h1 align='center'>
-  <img src='https://avatars.githubusercontent.com/u/3591786?s=280&v=4' width="300" height="300"/>
+  <img src='https://github.com/joseg-alvesg/project-trybeWallet/blob/main/src/images/trybeWalllet.png?raw=true' width="700" height="400"/>
 </h1>
 <h1 align='center'>Sobre o projeto</h1>
 O Projeto TrybeWallet é uma aplicação desenvolvida durante o curso da Trybe, que permite que permite gerencar suas despesas. É um site responsivo com capacidade de: ler, atualizar e excluir suas despesas em diversas moedas diferentes.
