@@ -2,10 +2,10 @@
 
 <section align="center">
 
-[Sobre o Projeto](#sobre-o-projeto) •
-[Tecnologias Utilizadas](#tecnologias-utilizadas)
-[Como Executar o Projeto](#como-executar-o-projeto) •
-[Contato](#contato)
+[Sobre o Projeto](#sobre-o-projeto-clipboard) •
+[Tecnologias Utilizadas](#tecnologias-utilizadas-computer)
+[Como Executar o Projeto](#como-executar-o-projeto-octocat) •
+[Contato](#contato-speech_balloon-)
 
 <img
 src="https://github.com/joseg-alvesg/project-trybeWallet/blob/main/src/images/trybeWalllet.png?raw=true"
