@@ -3,7 +3,7 @@
 <section align="center">
 
 [Sobre o Projeto](#sobre-o-projeto-clipboard) •
-[Tecnologias Utilizadas](#tecnologias-utilizadas-computer)
+[Tecnologias Utilizadas](#tecnologias-utilizadas-computer) •
 [Como Executar o Projeto](#como-executar-o-projeto-octocat) •
 [Contato](#contato-speech_balloon-)
 
